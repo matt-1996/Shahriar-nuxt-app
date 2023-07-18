@@ -24,6 +24,7 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '@/assets/css/app.css',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -48,6 +49,7 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     rtl:true,
+    treeShake: true,
     theme: {
       dark: true,
       themes: {
@@ -66,6 +68,14 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    postcss: {
+      postcssOptions: {
+        plugins: {
+          tailwindcss: {},
+          autoprefixer: {},
+        },
+      },
+    },
     extend(config, { isDev, isClient }) {
       config.node = {
         fs: 'empty'
